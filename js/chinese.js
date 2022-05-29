@@ -29,44 +29,72 @@ const otherTxt = document.getElementById("other-txt")
 
 audioArea.addEventListener("click",() => {
     if(!ppToggle){
-        console.log("play")
+        // console.log("play")
         htmlAudio.play()
     } else {
         htmlAudio.pause()
-        console.log("pause")
+        // console.log("pause")
     }
     ppToggle = !ppToggle;
 })
 
-let mouseTog = false;
-audioArea.addEventListener("mousedown",() => {
-    mouseTog = true; 
-    if(mouseTog){
+
+
+
+let toggle = false
+function handleMouseDown(event) {
+    console.log(toggle)
+    let mouse = event
+    toggle = true;
+    if(toggle){
         audioArea.style.backgroundColor = "lightblue"
-        audioArea.addEventListener("mouseenter",(e) => {
-            mIn.innerText = "Mouse in Div"
+        audioArea.addEventListener("mousemove",(e) => {
+            xPos.innerHTML = "x: " + e.clientX
+        })
+    } else {
         
-        })        
+
     }
-    console.log("mouse enter:", mouseTog)
-})
-audioArea.addEventListener("mouseleave",() => {
-    mouseTog = false; 
-    console.log("mouse exit:", mouseTog)
-    if(!mouseTog){
-        console.log("mouse exit:", mouseTog)
-        audioArea.style.backgroundColor = "lightred"
-        audioArea.addEventListener("mouseenter",(e) => {
-            mIn.innerText = "Mouse Not in div"
-        
-        })        
-    }
-})
+    if(audioArea.addEventListener("mouseup",() => {
+        console.log("up")
+        audioArea.style.backgroundColor = "white"
+        audioArea.removeEventListener("mouseup",handleMouseDown,)
+    }))
+    toggle = !toggle
+}
+// function handleMouseUp(event){
+//     toggle = false 
+//     console.log("mouse up")
+//         if(!toggle){
+//             audioArea.removeEventListener("mouseup",handleMouseDown)
+//         }
+//     }
+audioArea.addEventListener("mousedown",handleMouseDown)
 
 
-audioArea.addEventListener("mousemove",(e) => {
-    xPos.innerHTML = "x: " + e.clientX
-})
+
+
+// audioArea.addEventListener("mouseup",() => {
+//     mouseTog = false;
+//     if(!mouseTog){
+//         audioArea.removeEventListener("mousedown")
+//     }
+// })
+// audioArea.addEventListener("mouseleave",() => {
+//     mouseTog = false; 
+//     console.log("mouse exit:", mouseTog)
+//     if(!mouseTog){
+//         console.log("mouse exit:", mouseTog)
+//         audioArea.style.backgroundColor = "lightred"
+//         audioArea.addEventListener("mouseenter",(e) => {
+//             mIn.innerText = "Mouse Not in div"
+        
+//         })        
+//     }
+// })
+
+
+
 
 repeatBtn.addEventListener("click",() => {
     console.log("repeatBtn")
