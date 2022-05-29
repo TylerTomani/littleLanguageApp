@@ -43,7 +43,6 @@ audioArea.addEventListener("click",() => {
     ppToggle = !ppToggle;
 })
 
-
 function handleMouseMove(event){
     let mouse = event
     xPos.innerHTML = "x: " + mouse.clientX
@@ -72,17 +71,44 @@ function handleMouseDown(event) {
 
 audioArea.addEventListener("mousedown",handleMouseDown)
 
-
+// double tap repeat
 
 let timerToggle = false;
-repeatBtn.addEventListener("click",() => {
-    console.log("repeatBtn")
-    htmlAudio.play();
-    htmlAudio.currentTime = 0;
+let timeIndex = 0
+let timerArray = []
+function timeGap(i) {
+    let date = new Date()
+    ms = date.getMilliseconds();
+    timerArray[i] = ms;
+}
 
-
+audioArea.addEventListener("click",(e) => {
     
-    // htmlAudio.attributes.play(unit, [startTime], [sustainTime])
+        timeIndex++;
+        if(timeIndex > 1){
+            timeIndex = 0;
+        }  
+        setInterval(timeGap(timeIndex),100);
+        console.log(timerArray)
+        let t0 = timerArray[0]
+        let t1 = timerArray[1]
+
+        if((t1 - t0) <= 250 && (t1 - t0) >= 0  ){
+            console.log("yea!!:", t1 - t0)
+            htmlAudio.currentTime = 0;
+            htmlAudio.play();
+        }    
+})
+
+
+
+repeatBtn.addEventListener("click",() => {
+    
+    // htmlAudio.play();
+    // htmlAudio.currentTime = 0;
+
+
+
 })
 
 
@@ -106,6 +132,6 @@ function generateSentence() {
     engTxt.innerText = chineseParsed.english
     otherTxt.innerHTML = chineseParsed.chinese
 
-    audioCtrl.src = sentance;
-    audioCtrl.play();
+    htmlAudio.src = sentance;
+    htmlAudio.play();
 }
