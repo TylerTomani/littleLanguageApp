@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>audio</title>
+    <script src="js/chinese.js" defer></script>
+<!-- ??? THIS GETS RID OF 404 Error Message ????? -->
+<link rel="icon" href="data:;base64,=">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <a tabindex="2" href="../languageQuiz.html">home</a>
+    <div id="audio-cntrl-area">
+        <p>audio cntrl area</p>
+        <ul>
+            <li>Tap to play, pause</li>
+            <li><p style="color:red">double tap repeats</p></li>
+            <li><p style="color:red">scroll left and right, rewind fast forward</p></li>
+        </ul>
+        <p><span id="x">x</span>&emsp;&emsp;<span id="y">y</span></p>
+    </div>
+    <hr>
+
+
+    <!-- <p style="color:red">scroll left and right, rewind fast forward</p> -->
+
+    <!-- <input tabindex="1" id="rewind-fwd"type="range"> -->
+
+
+    <button tabindex="2" id="repeat-btn" >Repeat</button>
+
+
+    <button tabindex="2" id="next-btn">Next</button>
+    <audio controls id="htmlAudio"src="audio/spanish/El Niño Quieter Er Alto.mp3"></audio>
+    <p style="color: red">Another area tapped goes to next question</p>
+
+
+    <p id="english-txt">
+        place holder
+    </p>
+    <p id="other-txt"></p>
+
+
+</body>
+</html>

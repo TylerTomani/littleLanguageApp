@@ -1,0 +1,11 @@
+#audio-cntrl-area{
+    border: 3px solid black;
+    float: right;
+    width: 45%;
+    height: 45vh;
+    text-align: center;
+
+}
+#audio-cntrl-touch > area {
+    list-style-type: none;
+}
