@@ -1,6 +1,6 @@
 
 // Object for now, Make JSON for all audio paths, and sentences
-const chinese = '{"src":"audio/chinese/他早上不喝茶.mp3","chinese":"他早上不喝茶","english":"He doesn\'t drink tea in the morning"}';
+const chinese = '{"src":" audio/chinese/他早上不喝茶.mp3","chinese":"他早上不喝茶","english":"He doesn\'t drink tea in the morning"}';
 
 const chineseParsed = JSON.parse(chinese)
 
@@ -25,8 +25,6 @@ addEventListener("keypress",(e) =>{
 // Aundio Ctrnl Scroll Rewind Fast foward
 const rewindFwd = document.getElementById("rewind-fwd")
 let dur = htmlAudio.duration;
-
-
 
 const xPos = document.getElementById("x")
 const yPos = document.getElementById("y")
