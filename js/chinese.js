@@ -17,6 +17,10 @@ const rewindFwd = document.getElementById("rewind-fwd")
 
 const xPos = document.getElementById("x")
 const yPos = document.getElementById("y")
+const w = document.getElementById("w")
+const h = document.getElementById("h")
+const mIn = document.getElementById("mouseIn")
+
 
 // Question Variables
 const nextBtn = document.getElementById("next-btn")
@@ -32,6 +36,36 @@ audioArea.addEventListener("click",() => {
         console.log("pause")
     }
     ppToggle = !ppToggle;
+})
+
+let mouseTog = false;
+audioArea.addEventListener("mousedown",() => {
+    mouseTog = true; 
+    if(mouseTog){
+        audioArea.style.backgroundColor = "lightblue"
+        audioArea.addEventListener("mouseenter",(e) => {
+            mIn.innerText = "Mouse in Div"
+        
+        })        
+    }
+    console.log("mouse enter:", mouseTog)
+})
+audioArea.addEventListener("mouseleave",() => {
+    mouseTog = false; 
+    console.log("mouse exit:", mouseTog)
+    if(!mouseTog){
+        console.log("mouse exit:", mouseTog)
+        audioArea.style.backgroundColor = "lightred"
+        audioArea.addEventListener("mouseenter",(e) => {
+            mIn.innerText = "Mouse Not in div"
+        
+        })        
+    }
+})
+
+
+audioArea.addEventListener("mousemove",(e) => {
+    xPos.innerHTML = "x: " + e.clientX
 })
 
 repeatBtn.addEventListener("click",() => {
