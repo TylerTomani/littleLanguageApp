@@ -11,14 +11,26 @@ const audioArea = document.getElementById("audio-cntrl-area") // div touch area
 const pausePlay = document.getElementById("pause-play-btn");
 const repeatBtn = document.getElementById("repeat-btn")
 let ppToggle = false;
+let spaceToggle = false;
+addEventListener("keypress",(e) =>{
+    if(!spaceToggle){
+        htmlAudio.pause()
+    } else {
+        htmlAudio.play()
+    }
+    spaceToggle = !spaceToggle
+
+})
 
 // Aundio Ctrnl Scroll Rewind Fast foward
 const rewindFwd = document.getElementById("rewind-fwd")
+let dur = htmlAudio.duration;
+
+
 
 const xPos = document.getElementById("x")
 const yPos = document.getElementById("y")
-const w = document.getElementById("w")
-const h = document.getElementById("h")
+
 
 // Sound Controls ------------------------------------
 
@@ -37,6 +49,11 @@ audioArea.addEventListener("click",() => {
 function handleMouseMove(event){
     let mouse = event
     xPos.innerHTML = "x: " + mouse.clientX
+// Range Conversion/normaliz formula:
+// low2 + (value - low1) * (high2 - low2) / (high1 - low1)
+     const w = audioArea.clientWidth
+     let scaled =  0 + (mouse.clientX - 0) * (dur - 0) / (w - 0);
+     htmlAudio.currentTime = scaled
 }
 
 let toggle = false
@@ -57,12 +74,20 @@ function handleMouseDown(event) {
 
 audioArea.addEventListener("mousedown",handleMouseDown)
 
+
+
+let timerToggle = false;
 repeatBtn.addEventListener("click",() => {
     console.log("repeatBtn")
     htmlAudio.play();
     htmlAudio.currentTime = 0;
+
+
+    
     // htmlAudio.attributes.play(unit, [startTime], [sustainTime])
 })
+
+
 
 
 
