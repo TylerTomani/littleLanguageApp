@@ -45,7 +45,7 @@ audioArea.addEventListener("click",() => {
 
 function handleMouseMove(event){
     let mouse = event
-
+    xPos.innerHTML = "x: " + mouse.clientX
 // Range Conversion/normaliz formula:
 // low2 + (value - low1) * (high2 - low2) / (high1 - low1)
      const w = audioArea.clientWidth
