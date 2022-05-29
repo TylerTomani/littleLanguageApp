@@ -39,26 +39,25 @@ audioArea.addEventListener("click",() => {
 })
 
 
-
+function handleMouseMove(event){
+    let mouse = event
+    xPos.innerHTML = "x: " + mouse.clientX
+}
 
 let toggle = false
 function handleMouseDown(event) {
-    console.log(toggle)
+    console.log("down","toggle:", toggle)
     let mouse = event
     toggle = true;
     if(toggle){
         audioArea.style.backgroundColor = "lightblue"
-        audioArea.addEventListener("mousemove",(e) => {
-            xPos.innerHTML = "x: " + e.clientX
-        })
-    } else {
-        
-
+        audioArea.addEventListener("mousemove",handleMouseMove)
     }
     if(audioArea.addEventListener("mouseup",() => {
-        console.log("up")
+        console.log("up","toggle:", toggle)
         audioArea.style.backgroundColor = "white"
         audioArea.removeEventListener("mouseup",handleMouseDown,)
+        audioArea.removeEventListener("mousemove",handleMouseMove,)
     }))
     toggle = !toggle
 }
