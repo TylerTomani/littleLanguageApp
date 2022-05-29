@@ -17,9 +17,9 @@
         <ul>
             <li>Tap to play, pause</li>
             <li><p style="color:red">double tap repeats</p></li>
-            <li><p style="color:red">scroll left and right, rewind fast forward</p></li>
+            <li><p style="color:red">scroll left and right, rewind fast forward</p> GOt it, how do i figure out audio length</li>
         </ul>
-        <p> mouse <span id="x">x</span>&emsp;&emsp;<span id="y">y</span></p>
+        <p> mouse <span id="x">x</span></p>
         <p>width: <span id="w"></span> height: <span id="h"></span> </p>
         <p>mouse enter <span id="mouseIn"></span></p>
     </div>
@@ -44,6 +44,15 @@
     </p>
     <p id="other-txt"></p>
 
+    <hr>
 
+    <h2>Notes</h2>
+    <p>mouse click event listener won't work on phone 
+        <br> try and use touch instead  <br><q>1
+            i found the answer. For touch event.clientX and event.clientY were not working which i have changed to event.touches[0].clientX and event.touches[0].clientY and it fixed the touch event issue.</q> <br>
+            <a href="https://stackoverflow.com/questions/34081238/mouse-events-not-working-in-mobile"></a>
+    </p>
+    
+    
 </body>
 </html>

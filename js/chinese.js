@@ -19,13 +19,8 @@ const xPos = document.getElementById("x")
 const yPos = document.getElementById("y")
 const w = document.getElementById("w")
 const h = document.getElementById("h")
-const mIn = document.getElementById("mouseIn")
 
-
-// Question Variables
-const nextBtn = document.getElementById("next-btn")
-const engTxt = document.getElementById("english-txt")
-const otherTxt = document.getElementById("other-txt")
+// Sound Controls ------------------------------------
 
 audioArea.addEventListener("click",() => {
     if(!ppToggle){
@@ -46,7 +41,6 @@ function handleMouseMove(event){
 
 let toggle = false
 function handleMouseDown(event) {
-    console.log("down","toggle:", toggle)
     let mouse = event
     toggle = true;
     if(toggle){
@@ -54,46 +48,14 @@ function handleMouseDown(event) {
         audioArea.addEventListener("mousemove",handleMouseMove)
     }
     if(audioArea.addEventListener("mouseup",() => {
-        console.log("up","toggle:", toggle)
         audioArea.style.backgroundColor = "white"
         audioArea.removeEventListener("mouseup",handleMouseDown,)
         audioArea.removeEventListener("mousemove",handleMouseMove,)
     }))
     toggle = !toggle
 }
-// function handleMouseUp(event){
-//     toggle = false 
-//     console.log("mouse up")
-//         if(!toggle){
-//             audioArea.removeEventListener("mouseup",handleMouseDown)
-//         }
-//     }
+
 audioArea.addEventListener("mousedown",handleMouseDown)
-
-
-
-
-// audioArea.addEventListener("mouseup",() => {
-//     mouseTog = false;
-//     if(!mouseTog){
-//         audioArea.removeEventListener("mousedown")
-//     }
-// })
-// audioArea.addEventListener("mouseleave",() => {
-//     mouseTog = false; 
-//     console.log("mouse exit:", mouseTog)
-//     if(!mouseTog){
-//         console.log("mouse exit:", mouseTog)
-//         audioArea.style.backgroundColor = "lightred"
-//         audioArea.addEventListener("mouseenter",(e) => {
-//             mIn.innerText = "Mouse Not in div"
-        
-//         })        
-//     }
-// })
-
-
-
 
 repeatBtn.addEventListener("click",() => {
     console.log("repeatBtn")
@@ -104,12 +66,18 @@ repeatBtn.addEventListener("click",() => {
 
 
 
-// Sentence and Audio Generator
+// Question Generator---------------------------------
 
+// Question Variables
+const nextBtn = document.getElementById("next-btn")
+const engTxt = document.getElementById("english-txt")
+const otherTxt = document.getElementById("other-txt")
+
+
+// Sentence and Audio Generator
 nextBtn.addEventListener("click",generateSentence)
 
 function generateSentence() {
-
     let sentance = chineseParsed.src
 
     engTxt.innerText = chineseParsed.english
@@ -117,5 +85,4 @@ function generateSentence() {
 
     audioCtrl.src = sentance;
     audioCtrl.play();
-
 }
